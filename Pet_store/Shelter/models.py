@@ -10,4 +10,12 @@ class Pet(models.Model):
     available = models.BooleanField(default=True)
     adopted = models.DateTimeField(auto_now_add=True)
     siblings = models.ForeignKey('self',on_delete=models.SET_NULL,null= True,blank=True)
-    
+    def __str__(self):
+        return f"{self.name} - {self.species}"
+    class Meta:
+        verbose_name = 'Pet'
+        verbose_name_plural = 'Pets'
+        ordering = ['name']
+        
+
+        
