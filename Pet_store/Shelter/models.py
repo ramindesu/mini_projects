@@ -9,7 +9,7 @@ class Owner(models.Model):
     last_name = models.CharField(max_length=60)
     massage = models.TextField(null=True, blank=True)
     request_time = models.DateTimeField(auto_now_add=True)
-    phone = models.CharField(
+    phone = models.CharField(max_length=20,
         validators=[
             RegexValidator(
                 r"^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$",
@@ -26,8 +26,8 @@ class Owner(models.Model):
         return f"{self.first_name} - {self.last_name}"
 
     class Meta:
-        vebose_name = "Owner"
-        vebose_name_plural = "Owners"
+        verbose_name = "Owner"
+        verbose_name_plural = "Owners"
         ordering = ["last_name"]
 
 
