@@ -4,7 +4,10 @@ from .models import Pet , Owner
 
 @admin.register(Owner)
 class AdminOwner(admin.ModelAdmin):
-    pass
+    search_fields = ('first_name',)
+    list_filter = ('last_name' , )
+    fields = ('first_name' , 'last_name')
 @admin.register(Pet)
 class AdminPet(admin.ModelAdmin):
-    pass
+
+    search_fields = ('name',)
