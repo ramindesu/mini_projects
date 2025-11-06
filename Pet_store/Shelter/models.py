@@ -1,5 +1,5 @@
 from django.db import models
-from django.core.validators import MinValueValidator , RegexValidator
+from django.core.validators import MinValueValidator , RegexValidator , MaxLengthValidator
 # Create your models here.
 
 class Owner(models.Model):
@@ -7,6 +7,7 @@ class Owner(models.Model):
     last_name = models.CharField(max_length=60)
     massage= models.TextField(null=True,blank=True)
     request_time = models.DateTimeField(auto_now_add=True)
+    phone = models.CharField(validators=[RegexValidator(r"^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$" ,message='phone is not valid') , MaxLengthValidator(20)] )
     sub_owner = models.ForeignKey('self',null=True,blank=True,on_delete=models.SET_NULL)
     def __str__(self):
         return f"{self.first_name} - {self.last_name}"
