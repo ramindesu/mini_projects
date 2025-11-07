@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render
 from .models import Pet
 from .forms import OwnerForms
@@ -13,4 +14,12 @@ def animal(request, pet_id):
     return render(request, 'Shelter/animal.html' , {'pet':pet})
 
 def adpot(request,pet_id):
-    pass
+    if request.method == "POST":
+        form = OwnerForms(request.POST)
+        if form.is_valid():
+            form.save()
+            return  HttpResponse('adoption succesful')
+    else:
+        form= OwnerForms()
+
+    return render(request , 'adoption.html' , {'form':form})
