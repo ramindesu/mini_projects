@@ -42,7 +42,7 @@ class Pet(models.Model):
     siblings = models.ForeignKey(
         "self", on_delete=models.SET_NULL, null=True, blank=True
     )
-    owner = models.ForeignKey(Owner, on_delete=models.CASCADE)
+    owner = models.ForeignKey(Owner, on_delete=models.CASCADE,blank=True,null=True)
 
     def __str__(self):
         return f"{self.name} - {self.species}"
