@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Pet
-
+from .forms import OwnerForms
 
 # Create your views here.
 def Home(request):
@@ -11,3 +11,6 @@ def Home(request):
 def animal(request, pet_id):
     pet = Pet.objects.get(id = pet_id)
     return render(request, 'Shelter/animal.html' , {'pet':pet})
+
+def adpot(request,pet_id):
+    pass
