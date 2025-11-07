@@ -42,14 +42,14 @@
             <div class="name">{{ pet.name }}</div>
             <div class="species">{{ pet.species }} - {{ pet.age }} years old</div>
 
-            {% if pet.description %}
-                <p>{{ pet.description }}</p>
+            {% if pet.descriptions %}
+                <p>{{ pet.descriptions }}</p>
             {% else %}
                 <p><i>No description available</i></p>
             {% endif %}
         </div>
     {% empty %}
-        <p>No pet is available nigga :)</p>
+        <p>No pet is available nigga :) </p>
     {% endfor %}
 
 </div>

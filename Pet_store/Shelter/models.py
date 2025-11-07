@@ -36,7 +36,7 @@ class Pet(models.Model):
     species = models.CharField(max_length=60)
     age = models.PositiveSmallIntegerField(validators=[MinValueValidator(1)])
     descriptions = models.TextField(null=True, blank=True)
-    image = models.ImageField()
+    image = models.ImageField(upload_to='resource/')
     available = models.BooleanField(default=True)
     adopted = models.DateTimeField(auto_now_add=True)
     siblings = models.ForeignKey(

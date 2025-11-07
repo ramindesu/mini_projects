@@ -50,13 +50,13 @@
 <div class="card">
 
     {% if pet.image %}
-        <img src="{{ pet.image }}" alt="{{ pet.name }}">
+        <img src="{{ pet.image.url }}" alt="{{ pet.name }}">
     {% endif %}
 
     <div class="name">{{ pet.name }}</div>
     <div class="meta">{{ pet.species }} — {{ pet.age }} years old</div>
 
-    <p>{{ pet.description|default:"No description available." }}</p>
+    <p>{{ pet.descriptions|default:"No description available." }}</p>
 
     <a href="/">← Back to Pet List</a>
 
