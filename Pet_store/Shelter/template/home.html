@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pet List</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background: #fafafa;
+        }
+        .container {
+            width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+        }
+        .pet {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .pet:last-child {
+            border-bottom: none;
+        }
+        .name {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .species {
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Pet List</h1>
+
+    {% for pet in pets %}
+        <div class="pet">
+            <div class="name">{{ pet.name }}</div>
+            <div class="species">{{ pet.species }} - {{ pet.age }} years old</div>
+
+            {% if pet.description %}
+                <p>{{ pet.description }}</p>
+            {% else %}
+                <p><i>No description available</i></p>
+            {% endif %}
+        </div>
+    {% empty %}
+        <p>No pets have been added yet :)</p>
+    {% endfor %}
+
+</div>
+
+</body>
+</html>
