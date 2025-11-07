@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Adopt {{ pet.name }}</title>
+</head>
+<body>
+
+<div style="max-width: 600px; margin: 40px auto; border: 1px solid #ccc; padding: 20px; border-radius: 8px;">
+    <h2>Adopt {{ pet.name }}</h2>
+
+    <p><strong>Species:</strong> {{ pet.species }}</p>
+    <p><strong>Age:</strong> {{ pet.age }}</p>
+
+    <hr>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit">Adopt</button>
+    </form>
+</div>
+
+</body>
+</html>

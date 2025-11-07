@@ -13,13 +13,19 @@ def animal(request, pet_id):
     pet = Pet.objects.get(id = pet_id)
     return render(request, 'Shelter/animal.html' , {'pet':pet})
 
-def adpot(request,pet_id):
+def adopt(request, pet_id):
+    pet = Pet.objects.get(id=pet_id)
+
     if request.method == "POST":
         form = OwnerForms(request.POST)
         if form.is_valid():
-            form.save()
-            return  HttpResponse('adoption succesful')
-    else:
-        form= OwnerForms()
+            owner = form.save()       
+            pet.owner = owner           
+            pet.available = False       
+            pet.save()                
 
-    return render(request , 'adoption.html' , {'form':form})
+            return HttpResponse('adoption successful')
+    else:
+        form = OwnerForms()
+
+    return render(request, 'Shelter/adoption.html', {'form': form, 'pet': pet})
